@@ -1,5 +1,6 @@
 var path = require("path");
 var webpack = require("webpack");
+var cleanWebpackPlugin = require('clean-webpack-plugin');
 module.exports = {
 	// mode: "development || "production",
 	mode: 'none',
@@ -11,8 +12,9 @@ module.exports = {
 		chunkFilename: "[chunkhash].js"
 	},
 	plugins: [
+		new cleanWebpackPlugin(path.join(__dirname, 'dist')),
 		new webpack.optimize.AggressiveSplittingPlugin({
-			minSize: 30000,
+			minSize: 10000,
 			maxSize: 50000
 		}),
 		new webpack.DefinePlugin({
