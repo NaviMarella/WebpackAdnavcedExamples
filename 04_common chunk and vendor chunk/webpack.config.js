@@ -1,6 +1,9 @@
+//@ts-check
+var webpack = require('webpack');
 var path = require("path");
 var cleanWebpackPlugin = require('clean-webpack-plugin');
 
+/** @type webpack.Configuration**/
 module.exports = {
 	mode: "development", //"development" || "production",
 	entry: {
