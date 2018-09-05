@@ -1,5 +1,6 @@
 var path= require('path');
-module.exports = {
+var webpack = require('webpack');
+const config = {
 	// mode: "development" || "production",
 	mode: 'development',
 	entry: './08_scope hoisting/example.js',
@@ -14,3 +15,5 @@ module.exports = {
 		occurrenceOrder: true // To keep filename consistent between different modes (for example building only)
 	}
 };
+console.log(webpack(config));
+module.exports = config;
