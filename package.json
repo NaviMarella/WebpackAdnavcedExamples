@@ -6,6 +6,7 @@
   "scripts": {
     "webpack": "webpack",
     "build": "npm run webpack",
+    "node:debug": "node-nightly -- inspect ./node_modules/webpack/bin/webpack.js",
     "debug": "node --inspect --debug-brk ./node_modules/webpack/bin/webpack.js",
     "dev:debug": "npm run debug"
   },
