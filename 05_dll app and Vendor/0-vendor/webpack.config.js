@@ -1,6 +1,7 @@
 var path = require('path');
 var webpack = require('webpack');
 var cleanWebpackPlugin = require('clean-webpack-plugin');
+var SimpleProgressPlugin = require('webpack-simple-progress-plugin');
 
 class FileListPlugin {
 	apply(compiler) {
@@ -17,10 +18,10 @@ class FileListPlugin {
 
 			// Insert this list into the webpack build as a new file asset:
 			compilation.assets['filelist.md'] = {
-				source: function() {
+				source: function () {
 					return filelist;
 				},
-				size: function() {
+				size: function () {
 					return filelist.length;
 				}
 			};
@@ -45,8 +46,10 @@ module.exports = {
 		new cleanWebpackPlugin(path.join(__dirname, 'dist')),
 		new webpack.DllPlugin({
 			name: 'vendor_lib_[hash]',
+			format: true,
 			path: path.resolve(__dirname, 'dist/vendor-manifest.json')
 		}),
-		new FileListPlugin()
+		new FileListPlugin(),
+		new SimpleProgressPlugin()
 	]
 };
